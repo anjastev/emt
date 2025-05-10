@@ -1,45 +1,69 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8080/api/countries';
+import { useState, useEffect } from 'react';
+import CountryRepository from '../repositories/CountryRepository';
 
 export const useCountries = () => {
     const [countries, setCountries] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const fetchCountries = async () => {
+        setLoading(true);
         try {
-            const response = await axios.get(API_URL);
+            const response = await CountryRepository.getAll();
             setCountries(response.data);
+            setError(null);
         } catch (err) {
-            console.error('Failed to fetch countries:', err);
+            console.error('Error fetching countries:', err);
+            setError('Failed to fetch countries');
         } finally {
             setLoading(false);
         }
     };
 
     const addCountry = async (country) => {
-        await axios.post(API_URL, country);
-        await fetchCountries();
+        try {
+            await CountryRepository.create(country);
+            fetchCountries();
+            return { success: true };
+        } catch (err) {
+            console.error('Error adding country:', err);
+            return { success: false, error: err.message };
+        }
     };
 
-    const updateCountry = async (id, updatedCountry) => {
-        await axios.put(`${API_URL}/${id}`, updatedCountry);
-        await fetchCountries();
+    const updateCountry = async (id, country) => {
+        try {
+            await CountryRepository.update(id, country);
+            fetchCountries();
+            return { success: true };
+        } catch (err) {
+            console.error('Error updating country:', err);
+            return { success: false, error: err.message };
+        }
     };
 
     const deleteCountry = async (id) => {
-        await axios.delete(`${API_URL}/${id}`);
-        await fetchCountries();
+        try {
+            await CountryRepository.delete(id);
+            fetchCountries();
+            return { success: true };
+        } catch (err) {
+            console.error('Error deleting country:', err);
+            return { success: false, error: err.message };
+        }
     };
 
     useEffect(() => {
-
-        const loadCountries = async () => {
-            await fetchCountries();
-        };
-        loadCountries();
+        fetchCountries();
     }, []);
 
-    return { countries, loading, addCountry, updateCountry, deleteCountry };
+    return {
+        countries,
+        loading,
+        error,
+        fetchCountries,
+        addCountry,
+        updateCountry,
+        deleteCountry
+    };
 };

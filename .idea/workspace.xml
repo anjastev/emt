@@ -4,11 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77a220f9-6ff3-4da8-925c-d8206734d58e" name="Changes" comment="" />
+    <list default="true" id="77a220f9-6ff3-4da8-925c-d8206734d58e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/mk/ukim/finki/labsemt2/security/JwtSecurityWebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/mk/ukim/finki/labsemt2/security/JwtSecurityWebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/author/AuthorList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/author/AuthorList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/book/BookList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/book/BookList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/country/CountryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/country/CountryList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useAuthors.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useAuthors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useBooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useBooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useCountries.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useCountries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/repositories/AuthorRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repositories/AuthorRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/repositories/BookRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repositories/BookRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/repositories/CountryRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repositories/CountryRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/repositories/api.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -32,6 +52,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.LabsEmt2Application.executor": "Run",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Anja Stevkovska/Desktop/labemt",
@@ -45,11 +66,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anja Stevkovska\Desktop\lab - Copy\frontend\src\repositories" />
       <recent name="C:\Users\Anja Stevkovska\Desktop\lab - Copy\frontend\src\components\country" />
       <recent name="C:\Users\Anja Stevkovska\Desktop\lab - Copy\frontend\src\components\book" />
       <recent name="C:\Users\Anja Stevkovska\Desktop\lab - Copy\frontend\src\components\author" />
       <recent name="C:\Users\Anja Stevkovska\Desktop\lab - Copy\frontend\src\pages" />
-      <recent name="C:\Users\Anja Stevkovska\Desktop\lab - Copy\frontend\src" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.LabsEmt2Application">
@@ -112,7 +133,7 @@
       <workItem from="1746878159569" duration="225000" />
       <workItem from="1746878685972" duration="107000" />
       <workItem from="1746878801817" duration="4000" />
-      <workItem from="1746878907385" duration="6759000" />
+      <workItem from="1746878907385" duration="8447000" />
     </task>
     <servers />
   </component>

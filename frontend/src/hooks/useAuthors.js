@@ -1,41 +1,69 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8080/api/authors';
+import { useState, useEffect } from 'react';
+import AuthorRepository from '../repositories/AuthorRepository';
 
 export const useAuthors = () => {
     const [authors, setAuthors] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const fetchAuthors = async () => {
+        setLoading(true);
         try {
-            const response = await axios.get(API_URL);
+            const response = await AuthorRepository.getAll();
             setAuthors(response.data);
+            setError(null);
         } catch (err) {
-            console.error('Failed to fetch authors:', err);
+            console.error('Error fetching authors:', err);
+            setError('Failed to fetch authors');
         } finally {
             setLoading(false);
         }
     };
 
     const addAuthor = async (author) => {
-        await axios.post(API_URL, author);
-        await fetchAuthors();
+        try {
+            await AuthorRepository.create(author);
+            fetchAuthors();
+            return { success: true };
+        } catch (err) {
+            console.error('Error adding author:', err);
+            return { success: false, error: err.message };
+        }
     };
 
-    const updateAuthor = async (id, updatedAuthor) => {
-        await axios.put(`${API_URL}/${id}`, updatedAuthor);
-        await fetchAuthors();
+    const updateAuthor = async (id, author) => {
+        try {
+            await AuthorRepository.update(id, author);
+            fetchAuthors();
+            return { success: true };
+        } catch (err) {
+            console.error('Error updating author:', err);
+            return { success: false, error: err.message };
+        }
     };
 
     const deleteAuthor = async (id) => {
-        await axios.delete(`${API_URL}/${id}`);
-        await fetchAuthors();
+        try {
+            await AuthorRepository.delete(id);
+            fetchAuthors();
+            return { success: true };
+        } catch (err) {
+            console.error('Error deleting author:', err);
+            return { success: false, error: err.message };
+        }
     };
 
     useEffect(() => {
         fetchAuthors();
     }, []);
 
-    return { authors, loading, addAuthor, updateAuthor, deleteAuthor };
+    return {
+        authors,
+        loading,
+        error,
+        fetchAuthors,
+        addAuthor,
+        updateAuthor,
+        deleteAuthor
+    };
 };

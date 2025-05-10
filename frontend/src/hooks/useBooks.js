@@ -1,36 +1,69 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import BookRepository from '../repositories/BookRepository';
 
 export const useBooks = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const fetchBooks = () => {
+    const fetchBooks = async () => {
         setLoading(true);
-        axios.get("http://localhost:8080/api/books")
-            .then(res => setBooks(res.data))
-            .catch(err => console.error(err))
-            .finally(() => setLoading(false));
+        try {
+            const response = await BookRepository.getAll();
+            setBooks(response.data);
+            setError(null);
+        } catch (err) {
+            console.error('Error fetching books:', err);
+            setError('Failed to fetch books');
+        } finally {
+            setLoading(false);
+        }
     };
 
-    const addBook = async (data) => {
-        await axios.post("http://localhost:8080/api/books", data);
-        fetchBooks();
+    const addBook = async (book) => {
+        try {
+            await BookRepository.create(book);
+            fetchBooks();
+            return { success: true };
+        } catch (err) {
+            console.error('Error adding book:', err);
+            return { success: false, error: err.message };
+        }
     };
 
-    const updateBook = async (id, data) => {
-        await axios.put(`http://localhost:8080/api/books/${id}`, data);
-        fetchBooks();
+    const updateBook = async (id, book) => {
+        try {
+            await BookRepository.update(id, book);
+            fetchBooks();
+            return { success: true };
+        } catch (err) {
+            console.error('Error updating book:', err);
+            return { success: false, error: err.message };
+        }
     };
 
     const deleteBook = async (id) => {
-        await axios.delete(`http://localhost:8080/api/books/${id}`);
-        fetchBooks();
+        try {
+            await BookRepository.delete(id);
+            fetchBooks();
+            return { success: true };
+        } catch (err) {
+            console.error('Error deleting book:', err);
+            return { success: false, error: err.message };
+        }
     };
 
     useEffect(() => {
         fetchBooks();
     }, []);
 
-    return { books, loading, addBook, updateBook, deleteBook };
+    return {
+        books,
+        loading,
+        error,
+        fetchBooks,
+        addBook,
+        updateBook,
+        deleteBook
+    };
 };

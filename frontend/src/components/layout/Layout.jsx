@@ -1,25 +1,17 @@
-import React from "react";
-import { Outlet, Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
+import React from 'react';
+import { Container, Box } from '@mui/material';
+import Header from './Header';
+import Footer from './Footer';
 
-const Layout = () => {
+const Layout = ({ children }) => {
     return (
-        <>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                        Book Rental App
-                    </Typography>
-                    <Button color="inherit" component={Link} to="/">Home</Button>
-                    <Button color="inherit" component={Link} to="/books">Books</Button>
-                    <Button color="inherit" component={Link} to="/authors">Authors</Button>
-                    <Button color="inherit" component={Link} to="/countries">Countries</Button>
-                </Toolbar>
-            </AppBar>
-            <Container sx={{ mt: 4 }}>
-                <Outlet />
+        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Header />
+            <Container component="main" sx={{ mt: 4, mb: 4, flex: 1 }}>
+                {children}
             </Container>
-        </>
+            <Footer />
+        </Box>
     );
 };
 

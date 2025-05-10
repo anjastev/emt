@@ -1,12 +1,14 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React from 'react';
+import { Box, Typography, Container } from '@mui/material';
 
 const Footer = () => {
     return (
-        <Box sx={{ bgcolor: 'primary.main', color: 'white', p: 2, textAlign: 'center' }}>
-            <Typography variant="body2">
-                &copy; {new Date().getFullYear()} Bookstore App. All rights reserved.
-            </Typography>
+        <Box component="footer" sx={{ py: 3, px: 2, mt: 'auto', backgroundColor: (theme) => theme.palette.grey[200] }}>
+            <Container maxWidth="sm">
+                <Typography variant="body1" align="center">
+                    EMT Library Application &copy; {new Date().getFullYear()}
+                </Typography>
+            </Container>
         </Box>
     );
 };

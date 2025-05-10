@@ -1,22 +1,25 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/Layout";
-import Books from "./pages/Books";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import Home from './components/layout/Home';
+import BooksList from './components/book/BookList';
+import AuthorsList from './components/author/AuthorList';
+import CountriesList from './components/country/CountryList';
+import './App.css';
 
-
-const App = () => {
-  return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<h1>Welcome to Home Page</h1>} />
-            <Route path="/books" element={<Books />} />
-            <Route path="/authors" element={<div>Authors Page</div>} />
-            <Route path="/countries" element={<div>Countries Page</div>} />
-          </Route>
-        </Routes>
-      </Router>
-  );
-};
+function App() {
+    return (
+        <Router>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/books" element={<BooksList />} />
+                    <Route path="/authors" element={<AuthorsList />} />
+                    <Route path="/countries" element={<CountriesList />} />
+                </Routes>
+            </Layout>
+        </Router>
+    );
+}
 
 export default App;

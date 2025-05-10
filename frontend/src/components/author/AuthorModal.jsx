@@ -23,7 +23,7 @@ const AuthorModal = ({ author, onClose, onSave }) => {
   };
 
   return (
-      <Dialog open={!!author} onClose={onClose}> {/* Ensure 'open' is explicitly set */}
+      <Dialog open={!!author} onClose={onClose}>
         <DialogTitle>{author ? "Edit Author" : "Add Author"}</DialogTitle>
         <DialogContent>
           <Box sx={{ mt: 1 }}>
